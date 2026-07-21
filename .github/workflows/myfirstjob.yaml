@@ -1,6 +1,6 @@
 name: MyFirst Workflow
 
-on: push
+on: workflow_dispatch
 
 jobs:
   myfirstjob:
