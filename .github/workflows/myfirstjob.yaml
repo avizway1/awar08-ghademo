@@ -1,1 +1,10 @@
+name: MyFirst Workflow
 
+on: push
+
+jobs:
+  myfirstjob:
+    runs-on: ubuntu-24.04
+    steps:
+        - name: Print my name
+          run: echo "hello, Am Avinash and Am learning GHA"
