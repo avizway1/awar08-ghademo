@@ -1,4 +1,4 @@
-name: MyFirst Workflow
+name: Conditional Workflow
 
 on:
     push:
