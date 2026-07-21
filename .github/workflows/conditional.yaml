@@ -13,6 +13,7 @@ jobs:
 
   only-on-main:
     runs-on: ubuntu-24.04
+    if: github.ref == 'refs/heads/main'
     steps:
         - name: Print my name
           run: echo "This job is running only on main branch"
