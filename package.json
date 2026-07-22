@@ -1,0 +1,21 @@
+{
+  "name": "github-actions-nodejs-test",
+  "version": "1.0.0",
+  "description": "Simple Node.js project to test GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "keywords": [
+    "github-actions",
+    "nodejs",
+    "aws",
+    "devops"
+  ],
+  "author": "Avinash Reddy Thipparthi",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
