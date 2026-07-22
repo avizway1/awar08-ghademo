@@ -8,8 +8,8 @@ About Me
 Name      : Avinash Reddy Thipparthi
 Role      : Cloud & Infrastructure Architect
 Founder   : Aviz Academy
-Expertise : AWS | DevOps | Cloud | AI
-YouTube   : AWS with Avinash Reddy
+Expertise : AWS | DevOps | Cloud | AI | Security
+YouTube   : Aviz Academy | AWS with Avinash Reddy
 
 This workflow is running successfully! 🎉
 `);
