@@ -1,4 +1,4 @@
-name: MyFirst Workflow
+name: 01-MyFirst Workflow
 
 on:
     push:

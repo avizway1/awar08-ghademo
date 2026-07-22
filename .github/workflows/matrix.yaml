@@ -1,4 +1,4 @@
-name: 03-Node Js Setup
+name: 04-Node Js matrix Setup
 
 on:
   push:
@@ -7,10 +7,14 @@ on:
 jobs:
     node-setup:
         runs-on: ubuntu-latest
+        strategy: 
+            matrix:
+                node: [22,24, 26]
         steps:
             - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
-                node-version: '22'
+                node-version: ${{ matrix.node }}
             - run: npm install
             - run: node index.js
+            - run: node -v

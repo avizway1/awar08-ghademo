@@ -1,4 +1,4 @@
-name: Conditional Workflow
+name: 02-Conditional Workflow
 
 on:
     push:
