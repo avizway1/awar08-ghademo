@@ -1,0 +1,26 @@
+name: 06 Variables examples
+
+on:
+    push:
+        branches: [main, feature]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+env:
+    NAME: Avinash
+
+jobs:
+  myfirstjob:
+    runs-on: ubuntu-24.04
+    env:
+        GREETING: Hello
+    steps:
+        - name: Print my name
+          env: 
+            COURSE: GHA
+          run: echo "$GREETING, Am $NAME and Am learning $COURSE.. Am working on ${{ vars.PROJECT_NAME }}"
+        - name: Print repo name varibales
+          run: echo "My github repo name is ${{ github.repository }}"
+        - name: Print triggered by name varibales
+          run: echo "My github repo name is ${{ github.actor }}"
