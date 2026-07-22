@@ -1,0 +1,47 @@
+name: 05 - Node.js Matrix Setup with Multi Version and multi OS
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  node-setup:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        node:
+          - 22
+          - 24
+          - 26
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Application
+        run: node index.js
+
+      - name: Display Node Version
+        run: node -v
+
+      - name: Display Operating System
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Name: $RUNNER_NAME"
+          echo "Node Version:"
+          node -v
