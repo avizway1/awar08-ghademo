@@ -20,7 +20,7 @@ jobs:
             echo $TOKEN | cut -d. -f2 | base64 -d 2>/dev/null | jq .
 
       - name: Configure AWS credentials using OIDC
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6.2.3
         with:
           role-to-assume: arn:aws:iam::655700896650:role/GHA-Role
           aws-region: us-east-1
