@@ -1,0 +1,28 @@
+name: 09 S3 Input Create
+
+on:
+  workflow_dispatch:
+    inputs:
+      bucket-name:
+        description: 'Enter the S3 bucket name to create'
+        required: true
+        type: string
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+  list-buckets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v6.2.3
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Create an S3 bucket
+        run: | 
+            aws s3 mb s3://${{ github.event.inputs.bucket-name }} --region ap-south-1
+            aws s3 ls
