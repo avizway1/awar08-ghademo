@@ -22,7 +22,7 @@ jobs:
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v6.2.3
         with:
-          role-to-assume: arn:aws:iam::655700896650:role/GHA-Role
+          role-to-assume: arn:aws:iam::655700896650:role/awar08-gharole
           aws-region: us-east-1
 
       - name: verify whoami
