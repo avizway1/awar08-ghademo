@@ -10,6 +10,10 @@ permissions:
     id-token: write
     contents: read
 
+env:
+  ECR_REPOSITORY: ghademo
+  IMAGE_TAG: ${{ github.sha }}
+
 jobs:
   push-to-ecr:
     runs-on: ubuntu-latest
@@ -45,4 +49,3 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
           echo "Done..!! Image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG is pushed to ECR"
-          
