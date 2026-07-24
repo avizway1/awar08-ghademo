@@ -11,7 +11,7 @@ permissions:
     contents: read
 
 env:
-  ECR_REPOSITORY: ghademo
+  ECR_REPOSITORY: avizghatest
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
