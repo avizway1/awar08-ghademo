@@ -1,4 +1,4 @@
-name: Scan docker image for issues
+name: 15 - Scan docker image for issues
 
 on:
   pull_request:
