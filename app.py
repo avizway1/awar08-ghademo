@@ -1,5 +1,5 @@
 import os
-import subprocess  # nosec: S404 audited module usage
+import subprocess  # nosec B404  # noqa: S404 - audited module usage
 
 
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
@@ -22,7 +22,8 @@ def vulnerable_ping(host):
         "1",
         host,
     ]
-    subprocess.run(cmd, check=True)  # nosec: S603 input is manually handled
+    # Absolute path, no shell, args passed as a list.
+    subprocess.run(cmd, check=True)  # nosec B603  # noqa: S603
 
 
 if __name__ == "__main__":
