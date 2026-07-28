@@ -1,7 +1,9 @@
 name: 20 Deploy to EKS
 
 on:
-  workflow_dispatch:
+    push:
+        branches: main
+    workflow_dispatch:
 
 permissions:
     id-token: write
@@ -17,6 +19,9 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: EKS-Deploy
+
+      - name: checkout the code
+        uses: actions/checkout@v7
 
       - name: Update the kubeconfig
         run: aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
