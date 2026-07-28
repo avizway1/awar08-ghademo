@@ -34,5 +34,5 @@ jobs:
 
       - name: Verify the workload
         run: |
-            kubectl get pods
-            kubectl rollout status deployment --timeout=120s
+            kubectl get pods --namespace=${{ secrets.EKS_NAMESPACE }}
+            kubectl rollout status deployment --timeout=120s --namespace=${{ secrets.EKS_NAMESPACE }}
