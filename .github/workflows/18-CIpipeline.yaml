@@ -1,0 +1,13 @@
+name: 18 - Call other workflows
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    dependency-scan:
+        uses: ./.github/workflows/16-dependencyscan.yaml
+    
+    code-quality:
+        uses: ./.github/workflows/17-codequality.yaml
