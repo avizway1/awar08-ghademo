@@ -1,0 +1,33 @@
+name: 20 Deploy to EKS
+
+on:
+  workflow_dispatch:
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+  aws-access:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v6.2.3
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: EKS-Deploy
+
+      - name: Update the kubeconfig
+        run: aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
+
+      - name: verify eks nodes
+        run: kubectl get nodes
+
+      - name: apply using kubeconfig
+        run: kubectl apply -f k8s/ --namespace=${{ secrets.EKS_NAMESPACE }}
+
+      - name: Verify the workload
+        run: |
+            kubectl get pods
+            kubectl rollout status deployment --timeout=120s
